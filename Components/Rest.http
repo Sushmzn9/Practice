@@ -1,0 +1,15 @@
+@rootUrl = http://localhost:8000
+
+@apiUrl = {{rootUrl}}/demo/express
+
+GET  {{rootUrl}}
+
+###
+POST  {{apiUrl}}
+Content-Type: application/json
+
+{
+    "name": "sushan",
+    "age": "23",
+    "password": "fghjkl"
+}
