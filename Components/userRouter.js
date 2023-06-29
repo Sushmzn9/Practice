@@ -16,8 +16,29 @@ router.get("/", (req, res) => {
   }
 });
 router.post("/", async (req, res) => {
-  console.log(req.body);
-  const User = await insertUser(req.body);
+  try {
+    console.log(req.body);
+    const User = await insertUser(req.body);
+
+    User?._id
+      ? res.json({
+          status: "success",
+          message: "user has been added ",
+        })
+      : res.json({
+          status: "error",
+          message: "Unable to add user",
+        });
+  } catch (error) {
+    let msg = error.message;
+    if (msg.includes("E11000 duplicate key error")) {
+      msg = "There is another user who uses this name in the system";
+    }
+    res.json({
+      status: "error",
+      message: msg,
+    });
+  }
 });
 
 export default router;

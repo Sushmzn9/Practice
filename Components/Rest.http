@@ -12,4 +12,5 @@ Content-Type: application/json
     "name": "sushan",
     "age": "23",
     "password": "fghjkl"
+    
 }
